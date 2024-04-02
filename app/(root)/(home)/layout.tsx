@@ -4,7 +4,7 @@ import Sidebar from '@/components/ui/Sidebar'
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Meet Js",
+  title: "Meet Js | Made by Saurav Jadhav",
   description: "Video calling app",
   icons: {
     icon: '/icons/logo.svg'
