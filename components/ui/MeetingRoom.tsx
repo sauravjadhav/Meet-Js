@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { CallControls, CallParticipantsList, CallStatsButton, CallingState, PaginatedGridLayout, SpeakerLayout, useCallStateHooks } from '@stream-io/video-react-sdk';
+import { CallControls, CallParticipantsList, CallStatsButton, CallingState, PaginatedGridLayout, RecordCallButton, SpeakerLayout, useCallStateHooks } from '@stream-io/video-react-sdk';
 import React, { useState } from 'react'
 import {
   DropdownMenu,
@@ -54,7 +54,7 @@ const MeetingRoom = () => {
         </div>
 
         <div className='fixed bottom-0 flex w-full items-center justify-center gap-5 flex-wrap'>
-          <CallControls onLeave={() => router.push('/')}/>
+          <CallControls onLeave={() => router.push('/') } />
           <DropdownMenu>
             <div className='flex items-center'>
               <DropdownMenuTrigger
@@ -84,7 +84,7 @@ const MeetingRoom = () => {
               <Users  size={20} className='text-white'/>
             </div>
           </button>
-          {!isPersonalRoom && <EndCallButton />}
+          {!isPersonalRoom && <EndCallButton /> }
         </div>
     </section>
   )
