@@ -1,18 +1,20 @@
 'use client';
 
-import { Call, CallRecording } from '@stream-io/video-react-sdk';
+import { Call, CallRecording, useStreamVideoClient } from '@stream-io/video-react-sdk';
 
 import Loader from './Loader';
 import { useGetCalls } from '@/hooks/useGetCalls';
 import MeetingCard from './MeetingCard';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useUser } from '@clerk/nextjs';
 
 const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
   const router = useRouter();
   const { endedCalls, upcomingCalls, callRecordings, isLoading } =
     useGetCalls();
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
+  const { user } = useUser();
 
   const getCalls = () => {
     switch (type) {
@@ -97,6 +99,9 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
               type === 'recordings'
                 ? () => router.push(`${(meeting as CallRecording).url}`)
                 : () => router.push(`/meeting/${(meeting as Call).id}`)
+            }
+            avatar={
+              `${user?.username}`
             }
           />
         ))
