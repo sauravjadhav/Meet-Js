@@ -1,3 +1,4 @@
+import CallList from '@/components/ui/CallList';
 import MeetingTypeList from '@/components/ui/MeetingTypeList';
 import React from 'react'
 
@@ -25,6 +26,7 @@ const Home = () => {
       </div>
        
       <MeetingTypeList />
+      <CallList type="upcoming"/>
     </section>
   )
 }
