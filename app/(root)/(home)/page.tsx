@@ -12,9 +12,9 @@ const Home = () => {
       const now = new Date();
       setTime(now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }));
       setDate((new Intl.DateTimeFormat("en-IN", { dateStyle: 'full' })).format(now));
-    }, 1000); // Update every second
+    }, 1000);
 
-    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+    return () => clearInterval(intervalId)
   }, []);
 
   return (
