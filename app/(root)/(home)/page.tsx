@@ -1,7 +1,7 @@
+'use client'
 import React, { useState, useEffect } from 'react';
 import CallList from '@/components/ui/CallList';
 import MeetingTypeList from '@/components/ui/MeetingTypeList';
-import Link from 'next/link';
 
 const Home = () => {
   const [time, setTime] = useState(new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }));
