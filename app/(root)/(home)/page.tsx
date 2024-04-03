@@ -1,7 +1,7 @@
-'use client'
 import React, { useState, useEffect } from 'react';
 import CallList from '@/components/ui/CallList';
 import MeetingTypeList from '@/components/ui/MeetingTypeList';
+import Link from 'next/link';
 
 const Home = () => {
   const [time, setTime] = useState(new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }));
@@ -12,11 +12,10 @@ const Home = () => {
       const now = new Date();
       setTime(now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }));
       setDate((new Intl.DateTimeFormat("en-IN", { dateStyle: 'full' })).format(now));
-    }, 60000);
-  
-    return () => clearInterval(intervalId);
+    }, 1000); // Update every second
+
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
   }, []);
-  
 
   return (
     <section className='flex size-full flex-col gap-10 text-white'>
