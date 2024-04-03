@@ -44,7 +44,7 @@ const MeetingCard = ({
       </article>
       <article className={cn("flex justify-center relative", {})}>
         <div className="relative flex w-full max-sm:hidden">
-            Created by  <h2>{avatar}</h2>
+            <h2>{avatar}</h2>
         </div>
         {!isPreviousMeeting && (
           <div className="flex gap-2">
