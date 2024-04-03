@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react';
 import CallList from '@/components/ui/CallList';
 import MeetingTypeList from '@/components/ui/MeetingTypeList';
