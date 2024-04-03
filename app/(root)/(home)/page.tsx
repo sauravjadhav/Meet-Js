@@ -1,15 +1,22 @@
+import React, { useState, useEffect } from 'react';
 import CallList from '@/components/ui/CallList';
 import MeetingTypeList from '@/components/ui/MeetingTypeList';
-import Link from 'next/link';
-import React from 'react'
 
 const Home = () => {
-  const now = new Date();
+  const [time, setTime] = useState(new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }));
+  const [date, setDate] = useState((new Intl.DateTimeFormat("en-IN", { dateStyle: 'full' })).format(new Date()));
 
-  const time = now.toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit', timeZone: 'Asia/Kolkata'});
-  const date = (new Intl.DateTimeFormat("en-IN", {
-    dateStyle: 'full'
-  })).format(now);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const now = new Date();
+      setTime(now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }));
+      setDate((new Intl.DateTimeFormat("en-IN", { dateStyle: 'full' })).format(now));
+    }, 60000);
+  
+    return () => clearInterval(intervalId);
+  }, []);
+  
+
   return (
     <section className='flex size-full flex-col gap-10 text-white'>
       <div className='h-[300px] w-full rounded-[20px] bg-hero bg-cover'>
@@ -30,7 +37,7 @@ const Home = () => {
       <h1 className='glassmorphism max-w-[270px] rounded py-2 text-center text-base font-normal'>Upcoming Meetings</h1>
       <CallList type="upcoming"/>
     </section>
-  )
+  );
 }
 
-export default Home
+export default Home;
