@@ -20,7 +20,7 @@ type CallLayoutType = 'grid' | 'speaker-left' | 'speaker-right';
 const MeetingRoom = () => {
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get('personal')
-  const [layout, setLayout] = useState<CallLayoutType>('grid')
+  const [layout, setLayout] = useState<CallLayoutType>('speaker-left')
   const [showParticipants, setShowParticipants] = useState(false)
   const router = useRouter();
 
@@ -31,14 +31,14 @@ const MeetingRoom = () => {
 
   const CallLayout = () => {
     switch (layout) {
-      case 'speaker-left':
-        return <SpeakerLayout 
-        participantsBarPosition='right'/>
+      case 'grid':
+        return <PaginatedGridLayout />
       case 'speaker-right':
         return <SpeakerLayout 
         participantsBarPosition='left'/>
       default:
-        return <PaginatedGridLayout />
+        return <SpeakerLayout 
+        participantsBarPosition='right'/>
     }
   }
   return (
